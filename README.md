@@ -1,6 +1,6 @@
 #Uranium AWS Lambda Function Retriever
 
-Command line interface for retrieving configuration and code for AWS Lambda functions
+Command line interface for retrieving configuration and code for AWS Lambda functions.
 
 
 ##Usage Instructions
