@@ -19,7 +19,7 @@ node uranium <function name>
 ```
 node uranium testFunction
 
-// logs the following lambda information:
+// logs the following AWS Lambda function information:
 
 {
     "Configuration": {
