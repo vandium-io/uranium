@@ -1,0 +1,14 @@
+{
+  "name": "uranium",
+  "version": "1.0.0",
+  "description": "get aws lambda configuration information",
+  "main": "uranium.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vandium",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "aws-sdk": "^2.4.6"
+  }
+}
