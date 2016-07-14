@@ -1,4 +1,6 @@
-#Uranium AWS Lambda Function Retriever
+[![npm version](https://badge.fury.io/js/uranium.svg)](https://badge.fury.io/js/uranium)
+
+#Uranium
 
 Command line interface for retrieving configuration and code for AWS Lambda functions.
 
