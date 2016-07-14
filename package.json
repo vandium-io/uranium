@@ -1,6 +1,6 @@
 {
   "name": "uranium",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "get aws lambda configuration information",
   "main": "uranium.js",
   "scripts": {
