@@ -12,15 +12,11 @@ const proxyquire = require( 'proxyquire' ).noCallThru();
 const control = require( './constants' );
 
 
-let lambdaStub = sinon.stub();
-
 let promiseStub = sinon.stub().returns( Promise.resolve( control.response ) );
 
 let LambdaStub = class {
 
-    getFunction( arg ) {
-
-        lambdaStub( arg );
+    getFunction() {
 
         return {
 
