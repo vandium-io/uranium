@@ -30,9 +30,16 @@ describe( 'uranium', function() {
 
             expect( code ).equal( 0 );
 
-            expect( collectedData.indexOf( 'AWS Lamba function information:' ) === 1 );
 
-            expect( collectedData.indexOf( control.response ) === 1 );
+            let expectedMessage_1 = 'AWS Lamba function information:';
+
+            expect( collectedData.indexOf( expectedMessage_1 ) >= 0 ).true;
+
+
+            let expectedMessage_2 = JSON.stringify( control.response, null, 4 );
+
+            expect( collectedData.indexOf( expectedMessage_2 ) > 0 ).true;
+
 
             done();
         });
@@ -58,9 +65,16 @@ describe( 'uranium', function() {
 
             expect( code ).equal( 1 );
 
-            expect( collectedData.indexOf( 'Error occured in retrieving AWS Lambda function information:' ) === 1 );
 
-            expect( collectedData.indexOf( control.errorMessage ) === 1 );
+            let expectedMessage_1 = 'Error occured in retrieving AWS Lambda function information:';
+
+            expect( collectedData.indexOf( expectedMessage_1 ) >= 0 ).true;
+
+
+            let expectedMessage_2 = '    ' + control.errorMessage;
+
+            expect( collectedData.indexOf( expectedMessage_2 ) > 0 ).true;
+
 
             done();
         });
