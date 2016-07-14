@@ -4,11 +4,21 @@
   "description": "get aws lambda configuration information",
   "main": "uranium.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --recursive",
+    "test/": "./node_modules/.bin/mocha --recursive",
+    "coverage": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive",
+    "coverage/": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive"
   },
   "author": "vandium",
   "license": "BSD-3-Clause",
   "dependencies": {
     "aws-sdk": "^2.4.6"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^2.5.3",
+    "proxyquire": "^1.7.10",
+    "sinon": "^1.17.4"
   }
 }
