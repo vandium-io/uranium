@@ -27,6 +27,8 @@ function logFunctionInfo( configInfo ) {
     console.log( JSON.stringify( configInfo, null, 4 ) );
 
     console.log( '' );
+
+    process.exit( 0 );
 }
 
 
@@ -41,4 +43,6 @@ function logError( err ) {
     console.log( '    ' + err.message )
 
     console.log( '' );
+
+    process.exit( 1 );
 }
