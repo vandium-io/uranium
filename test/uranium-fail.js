@@ -14,7 +14,7 @@ const control = require( './constants' );
 
 let lambdaStub = sinon.stub();
 
-let promiseStub = sinon.stub().returns( Promise.resolve( control.response ) );
+let promiseStub = sinon.stub().returns( Promise.reject( new Error( control.errorMessage ) ) );
 
 let LambdaStub = class {
 

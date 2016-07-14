@@ -11,3 +11,5 @@ test
 .jshintrc
 
 .istanbul.yml
+
+bin

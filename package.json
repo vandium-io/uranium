@@ -4,10 +4,8 @@
   "description": "get aws lambda configuration information",
   "main": "uranium.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive",
-    "test/": "./node_modules/.bin/mocha --recursive",
-    "coverage": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive",
-    "coverage/": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive"
+    "test": "mocha test/uranium.test.js",
+    "coverage": "./bin/coverage.sh"
   },
   "author": "vandium",
   "license": "BSD-3-Clause",

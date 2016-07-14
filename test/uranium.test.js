@@ -16,155 +16,53 @@ describe( 'uranium', function() {
 
         let collectedData = '';
 
-        child.stdout.on( 'data', data => {
+        child.stdout.on( 'data', function( data ) {
 
             collectedData+= data.toString();
         });
 
-        child.stderr.on( 'data', data => {
+        child.stderr.on( 'data', function( data ) {
 
             throw new Error( 'unexpected error: ' + data.toString() );
         });
 
-        child.on( 'close', code => {
-
-            //TODO: put expects here
-
-            // console.log( collectedData )
+        child.on( 'close', function( code ) {
 
             expect( code ).equal( 0 );
+
+            expect( collectedData.indexOf( 'AWS Lamba function information:' ) === 1 );
+
+            expect( collectedData.indexOf( control.response ) === 1 );
+
+            done();
+        });
+    });
+
+    it( 'fail: Error in getting Lambda function', function( done ) {
+
+        let child = spawn( 'node', [ 'uranium-fail', control.FunctionName + 'x' ], { cwd: __dirname } );
+
+        let collectedData = '';
+
+        child.stdout.on( 'data', function( data ) {
+
+            collectedData+= data.toString();
+        });
+
+        child.stderr.on( 'data', function( data ) {
+
+            throw new Error( 'unexpected error: ' + data.toString() );
+        });
+
+        child.on( 'close', function( code ) {
+
+            expect( code ).equal( 1 );
+
+            expect( collectedData.indexOf( 'Error occured in retrieving lambda function information:' ) === 1 );
+
+            expect( collectedData.indexOf( control.errorMessage ) === 1 );
 
             done();
         });
     });
 });
-
-
-
-
-
-// describe( 'uranium', function() {
-//
-//     let consoleStub;
-//
-//     it( 'normal operation: Lambda function exists', function( done ) {
-//
-//         consoleStub = sinon.stub( console, 'log' );
-//
-//         let controlCliInput = control.response;
-//
-//         process.argv[2] = controlCliInput;
-//
-//         let lambdaStub = sinon.stub();
-//
-//         let promiseStub = sinon.stub().returns( Promise.resolve( control.response ) );
-//
-//         let LambdaStub = class {
-//
-//             getFunction( arg ) {
-//
-//                 lambdaStub( arg );
-//
-//                 return {
-//
-//                     promise: promiseStub
-//                 };
-//             }
-//         };
-//
-//         let awsSdkStub = {
-//
-//             Lambda: LambdaStub
-//         }
-//
-//         Promise.resolve( proxyquire( MODULE_PATH, {
-//
-//             'aws-sdk': awsSdkStub
-//         }))
-//             .then( function() {
-//
-//                 consoleStub.restore()
-//
-//                 expect( lambdaStub.calledOnce ).true;
-//                 expect( lambdaStub.withArgs( { FunctionName: controlCliInput } ).calledOnce ).true;
-//
-//                 expect( promiseStub.calledOnce ).true;
-//                 expect( promiseStub.withArgs().calledOnce ).true;
-//
-//                 expect( consoleStub.callCount ).equal( 5 );
-//                 expect( consoleStub.withArgs( '' ).calledThrice ).true;
-//                 expect( consoleStub.withArgs( 'AWS Lamba function information:' ).calledOnce ).true;
-//                 expect( consoleStub.withArgs( JSON.stringify( control.response, null, 4 ) ).calledOnce ).true;
-//
-//                 consoleStub.reset()
-//
-//                 done();
-//             })
-//             .catch( done );
-//     });
-//
-//     xit( 'fail: Error in getting Lambda function', function( done ) {
-//
-//         consoleStub = sinon.stub( console, 'log' );
-//
-//         let controlCliInput = control.response + 'x'
-//
-//         process.argv[2] = controlCliInput;
-//
-//         let controlError = new Error( control.errorMessage );
-//
-//         let lambdaStub = sinon.stub();
-//
-//         let promiseStub = sinon.stub().returns( Promise.reject( controlError ) );
-//
-//         let LambdaStub = class {
-//
-//             getFunction( arg ) {
-//
-//                 lambdaStub( arg );
-//
-//                 return {
-//
-//                     promise: promiseStub
-//                 };
-//             }
-//         };
-//
-//         let awsSdkStub = {
-//
-//             Lambda: LambdaStub
-//         }
-//
-//         Promise.resolve( proxyquire( MODULE_PATH, {
-//
-//             'aws-sdk': awsSdkStub
-//         }))
-//             .then( function() {
-//
-//                 consoleStub.restore();
-//                 // consoleStub.restore()
-//
-//                 expect( lambdaStub.calledOnce ).true;
-//                 expect( lambdaStub.withArgs( { FunctionName: controlCliInput } ).calledOnce ).true;
-//
-//                 expect( promiseStub.calledOnce ).true;
-//                 expect( promiseStub.withArgs().calledOnce ).true;
-//
-//                 // expect( consoleStub.callCount ).equal( 5 );
-//                 // expect( consoleStub.withArgs( '' ).calledThrice ).true;
-//                 // expect( consoleStub.withArgs( 'Error occured in retrieving lambda function information:' ).calledOnce ).true;
-//
-//                 // let expectedErrorMessage =  '    ' + control.errorMessage;
-//
-//                 // expect( consoleStub.withArgs( JSON.stringify( control.response, null, 4 ) ).calledOnce ).true;
-//
-//                 consoleStub.reset();
-//
-//                 done();
-//             })
-//             .catch( done );
-//     });
-// });
-
-
-module.exports;
