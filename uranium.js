@@ -36,7 +36,7 @@ function logError( err ) {
 
     console.log( '' );
 
-    console.log( 'Error occured in retrieving lambda function information:' );
+    console.log( 'Error occured in retrieving AWS Lambda function information:' );
 
     console.log( '' );
 

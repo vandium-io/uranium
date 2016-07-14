@@ -58,7 +58,7 @@ describe( 'uranium', function() {
 
             expect( code ).equal( 1 );
 
-            expect( collectedData.indexOf( 'Error occured in retrieving lambda function information:' ) === 1 );
+            expect( collectedData.indexOf( 'Error occured in retrieving AWS Lambda function information:' ) === 1 );
 
             expect( collectedData.indexOf( control.errorMessage ) === 1 );
 
