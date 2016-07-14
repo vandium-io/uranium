@@ -7,15 +7,14 @@ Command line interface for retrieving configuration and code for AWS Lambda func
 
 ##Usage Instructions
 
-1. Install uranium from npm using the following command line command:
-
+**1.** Install uranium from npm using the following command line command:
 ```
 npm install uranium
 ```
 
-2. In your command line, go to the directory where the file uranium.js is located; uranium.js is located at the root of the uranium node module.
+**2.** In your command line, go to the directory where the file uranium.js is located; uranium.js is located at the root of the uranium node module.
 
-3. Input a command in the following form:
+**3.** Input a command in the following form:
 
 ```
 node uranium <function name>
