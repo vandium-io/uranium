@@ -20,7 +20,7 @@
         }
     },
 
-    "FunctionName": "test-function",
+    "FunctionName": "testFunction",
 
     "errorMessage": "control error message"
 }
